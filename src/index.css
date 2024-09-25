@@ -1,0 +1,270 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .container {
+    @apply mx-auto;
+  }
+}
+
+* {
+  font-family: "Comfortaa", sans-serif !important;
+}
+
+body{
+  scroll-behavior: smooth;
+}
+
+/* Width and height of the scrollbar track */
+body::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+/* Background color of the scrollbar track */
+body::-webkit-scrollbar-track {
+  background-color: #fff;
+}
+
+/* Color of the scrollbar thumb */
+body::-webkit-scrollbar-thumb {
+  background-color: #000;
+}
+
+.primary-btn {
+  font-size: 16px;
+  padding: 12px 20px;
+  line-height: 24px;
+  display: inline-flex;
+  border-radius: 0;
+  font-weight: 500;
+  position: relative;
+  border: 1px solid #000;
+  align-items: center;
+  overflow: hidden;
+  z-index: 1;
+  text-align: center;
+  transition: all 0.2s;
+  justify-content: center;
+  background: #000;
+  color: #fff;
+}
+.primary-btn:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: -100%;
+  width: 200%;
+  height: 100%;
+  z-index: 1;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    border-right 0.5s cubic-bezier(0.4, 0, 0.2, 1); /* Add transition for both properties */
+  opacity: 0;
+  border-right: 2px solid #fff;
+  background-color: rgba(255, 255, 255, 0.4);
+}
+.primary-btn:hover:after {
+  right: 100%;
+  opacity: 1;
+}
+
+.secondary-btn {
+  font-size: 16px;
+  padding: 12px 20px;
+  line-height: 24px;
+  display: inline-flex;
+  border-radius: 0;
+  font-weight: 500;
+  position: relative;
+  border: 1px solid #000;
+  align-items: center;
+  overflow: hidden;
+  z-index: 1;
+  text-align: center;
+  transition: all 0.2s;
+  justify-content: center;
+  background: transparent;
+  color: #000;
+}
+.secondary-btn:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: -100%;
+  width: 200%;
+  height: 100%;
+  z-index: 1;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    border-right 0.5s cubic-bezier(0.4, 0, 0.2, 1); /* Add transition for both properties */
+  opacity: 0;
+  border-right: 2px solid #fff;
+  background-color: rgba(255, 255, 255, 0.4);
+}
+.secondary-btn:hover {
+  background-color: #000;
+  color: #fff;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    border-right 0.5s cubic-bezier(0.4, 0, 0.2, 1); /* Add transition for both properties */
+}
+.secondary-btn:hover:after {
+  right: 100%;
+  opacity: 1;
+}
+
+/* Product Quick View && Cart Scrollbar */
+
+/* Width and height of the scrollbar track */
+.product-details::-webkit-scrollbar,
+.cart-products::-webkit-scrollbar,
+.table-container::-webkit-scrollbar {
+  width: 3px;
+  height: 10px;
+}
+
+/* Background color of the scrollbar track */
+.product-details::-webkit-scrollbar-track,
+.cart-products::-webkit-scrollbar-track,
+.table-container::-webkit-scrollbar-track {
+  background-color: #fff;
+}
+
+/* Color of the scrollbar thumb */
+.product-details::-webkit-scrollbar-thumb,
+.cart-products::-webkit-scrollbar-thumb,
+.table-container::-webkit-scrollbar-thumb {
+  background-color: #000;
+}
+
+/* Header*/
+
+/* Navbar On Mobile */
+
+.menu-container {
+  background-color: #24262b;
+  top: -100vh;
+  opacity: 0;
+  transition: all 0.5s ease-in-out;
+  z-index: 1000;
+}
+
+.menu-container.open {
+  opacity: 1;
+  top: 0;
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+  animation: fadeInDown 0.5s ease-in-out;
+}
+
+@keyframes fadeInDown {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Cart & Favourites Sidebar */
+
+.sidebar-modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #fff;
+  height: 100vh;
+  z-index: 1005;
+  transform: translateX(100%);
+  animation: slideIn 0.5s forwards;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+.sidebar-modal.closing {
+  animation: slideOut 0.5s forwards;
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(100%);
+  }
+}
+
+.line-container .line {
+  transition: all 0.5s ease-in-out;
+}
+
+.line-container .line.active {
+  position: absolute;
+  bottom: 0;
+  width: 50%;
+  background-color: #000;
+  height: 2px;
+  transition: all 0.5s ease-in-out;
+}
+
+.line-container .line.active.line-cart {
+  animation: slideIn 0.5s forwards;
+}
+
+.line-container .line.active.line-wishlist {
+  animation: slideOut 0.5s forwards;
+}
+
+/* Hover Product Cart ==> Animate Showing Icons */
+.product-card:hover .overlay {
+  bottom: 0;
+}
+
+/* Testimonials */
+.testimonials {
+  background-color: #000;
+  position: relative;
+  padding-top: 90px;
+  padding-bottom: 90px;
+}
+
+.testimonials .slick-slide {
+  padding-right: 30px;
+}
+
+/* Product Details Page */
+
+.product-details .slick-thumb {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 100px !important;
+  position: absolute;
+  bottom: 100px;
+  left: 43%;
+  transform: translateX(-50%);
+}
+
+@media (max-width: 576px) {
+  .product-details .slick-thumb {
+    bottom: 50px;
+    gap: 50px !important;
+  }
+}
